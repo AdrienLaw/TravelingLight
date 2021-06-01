@@ -405,7 +405,7 @@ public class TravelOrderHelper implements Serializable {
     /**
      * 测试原始数据
      * @param topic
-     * @param count
+     * @param count 周期产生数据
      * @param sleep
      * @throws Exception
      */
@@ -422,7 +422,11 @@ public class TravelOrderHelper implements Serializable {
         Map<String,String> pubs = getPubMappingPro();
         List<String> productIDs = getProducts();
 
-        //时间(天)范围轨迹数据
+        /**
+         * 实时产生数据
+         * 时间(天)范围轨迹数据
+         */
+
         while(true){
             String curTime = CommonUtil.formatDate(new Date(), dateFormatter);
             Map<String,String> totalDatas = new HashMap<String,String>();
@@ -545,7 +549,7 @@ public class TravelOrderHelper implements Serializable {
 
     /**
      * 造数入口
-     * 示例： --topic t_travel_ods --source product -begin 20191212103000 --end 20191212103500 --count 1000 --sleep 3000
+     * 示例： pragram argument 配置为： --topic t_travel_ods --source product -begin 20191212103000 --end 20191212103500 --count 1000 --sleep 3000
      * @param args
      * @throws Exception
      */

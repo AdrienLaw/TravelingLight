@@ -51,7 +51,8 @@
     <!-- 日志jar包依赖 -->
     <dependency>
       <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
+<!--      <artifactId>slf4j-api</artifactId>-->
+      <artifactId>slf4j-log4j12</artifactId>
       <version>${slf4j.version}</version>
       <scope>${scope}</scope>
     </dependency>
@@ -136,7 +137,39 @@
       <version>18.0</version>
     </dependency>
 
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql.jdbc.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
   </dependencies>
+
+  <!--项目构建-->
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <resources>
+          <resource>
+            <directory>${project.basedir}/src/main/resources</directory>
+            <filtering>true</filtering>
+          </resource>
+        </resources>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
   <build>
     <outputDirectory>target/classes</outputDirectory>
@@ -153,6 +186,78 @@
             <target>${java.version}</target>
             <encoding>${file.encoding}</encoding>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.1.0</version>
+          <executions>
+            <!-- 旅游项目流式行为日志数据 -->
+            <execution>
+              <id>TravelCurLogJob</id>
+              <phase>package</phase>
+              <goals>
+                <goal>shade</goal>
+              </goals>
+              <configuration>
+                <shadedArtifactAttached>true</shadedArtifactAttached>
+                <shadedClassifierName>TravelCurLogJob</shadedClassifierName>
+                <filters>
+                  <filter>
+                    <artifact>*:*</artifact>
+                    <excludes>
+                      <exclude>META-INF/*.SF</exclude>
+                      <exclude>META-INF/*.DSA</exclude>
+                      <exclude>META-INF/*.RSA</exclude>
+                    </excludes>
+                  </filter>
+                </filters>
+                <transformers>
+                  <transformer
+                          implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                    <resource>reference.conf</resource>
+                  </transformer>
+                  <transformer
+                          implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                    <mainClass>com.adrien.bigdata.realtime.util.data.travel.logs.TravelCurLogHelper</mainClass>
+                  </transformer>
+                </transformers>
+              </configuration>
+            </execution>
+
+            <!-- 旅游项目流式订单数据 -->
+            <execution>
+              <id>TravelOrderJob</id>
+              <phase>package</phase>
+              <goals>
+                <goal>shade</goal>
+              </goals>
+              <configuration>
+                <shadedArtifactAttached>true</shadedArtifactAttached>
+                <shadedClassifierName>TravelOrderJob</shadedClassifierName>
+                <filters>
+                  <filter>
+                    <artifact>*:*</artifact>
+                    <excludes>
+                      <exclude>META-INF/*.SF</exclude>
+                      <exclude>META-INF/*.DSA</exclude>
+                      <exclude>META-INF/*.RSA</exclude>
+                    </excludes>
+                  </filter>
+                </filters>
+                <transformers>
+                  <transformer
+                          implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                    <resource>reference.conf</resource>
+                  </transformer>
+                  <transformer
+                          implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                    <mainClass>com.adrien.bigdata.realtime.util.data.travel.orders.TravelOrderHelper</mainClass>
+                  </transformer>
+                </transformers>
+              </configuration>
+            </execution>
+          </executions>
         </plugin>
       </plugins>
     </pluginManagement>

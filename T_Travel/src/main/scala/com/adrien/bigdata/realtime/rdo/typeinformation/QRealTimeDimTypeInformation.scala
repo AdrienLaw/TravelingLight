@@ -1,4 +1,4 @@
-package com.adrien.bigdata.realtime.streaming.rdo.typeinformation
+package com.adrien.bigdata.realtime.rdo.typeinformation
 
 import org.apache.flink.api.common.typeinfo.{BasicTypeInfo, TypeInformation}
 

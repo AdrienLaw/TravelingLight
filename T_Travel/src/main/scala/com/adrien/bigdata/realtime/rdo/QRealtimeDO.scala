@@ -1,4 +1,4 @@
-package com.adrien.bigdata.realtime.streaming.rdo
+package com.adrien.bigdata.realtime.rdo
 
 /**
  * 封装原始数据、维度数据、聚合时候维度、聚合度量值、key-value类型数据

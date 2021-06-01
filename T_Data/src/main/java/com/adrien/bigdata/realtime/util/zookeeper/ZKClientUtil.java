@@ -1,7 +1,8 @@
 package com.adrien.bigdata.realtime.util.zookeeper;
 
-import com.qianfeng.bigdata.realtime.constant.CommonConstant;
-import com.qianfeng.bigdata.realtime.util.PropertyUtil;
+
+import com.adrien.bigdata.realtime.constant.CommonConstant;
+import com.adrien.bigdata.realtime.util.PropertyUtil;
 import kafka.utils.ZKStringSerializer$;
 import kafka.utils.ZkUtils;
 import org.I0Itec.zkclient.ZkClient;

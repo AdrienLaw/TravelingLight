@@ -662,8 +662,8 @@ public class TravelCurLogHelper {
 
 
     /**
-     * 造数入口
-     * 示例： --topic test_logs --source ods --action 02 --count 3 --sleep 3000
+     * 日志行为造数入口
+     * 示例： pragram argument 配置为：--topic travel_ods_logs --source ods --action 02 --count 3 --sleep 3000
      * @param args
      * @throws Exception
      */

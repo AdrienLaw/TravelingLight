@@ -98,3 +98,13 @@ fabric.properties
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+
+.DS_Store
+T_Data/.DS_Store
+T_Data/target/classes/areacode/
+T_Data/target/classes/gis/
+T_Data/target/classes/kafka/
+T_Data/target/generated-sources/
+T_Data/target/maven-archiver/
+T_Data/target/maven-status/
+T_Travel/target/

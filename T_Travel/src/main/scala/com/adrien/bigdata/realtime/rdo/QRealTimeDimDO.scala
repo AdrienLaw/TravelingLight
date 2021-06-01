@@ -1,4 +1,4 @@
-package com.adrien.bigdata.realtime.streaming.rdo
+package com.adrien.bigdata.realtime.rdo
 
 /**
  * 对旅游产品维度封装

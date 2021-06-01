@@ -15,7 +15,7 @@
   <!--版本常量信息-->
   <properties>
     <flink.version>1.9.1</flink.version>
-    <es.version>6.5.3</es.version>
+    <es.version>6.6.2</es.version>
     <guava.version>21.0</guava.version>
     <mysql.jdbc.version>5.1.44</mysql.jdbc.version>
 
@@ -101,11 +101,11 @@
       <version>5.0.0.Beta1</version>
     </dependency>
 
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-all</artifactId>
-      <version>4.1.16.Final</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>io.netty</groupId>-->
+<!--      <artifactId>netty-all</artifactId>-->
+<!--      <version>4.1.16.Final</version>-->
+<!--    </dependency>-->
 
     <!-- mysql -->
     <dependency>
